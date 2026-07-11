@@ -245,7 +245,7 @@ footer {
     color: var(--text-muted);
 }
 
-/* Legal Pages */
+/* Legal Pages (Styled to match the Flutter App's exact layout) */
 .legal-content {
     padding: 6rem 0;
     max-width: 800px;
@@ -253,47 +253,46 @@ footer {
 }
 
 .legal-content h1 {
-    font-size: 3.5rem;
+    font-size: 20px;
     font-weight: 900;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, #FFFFFF 0%, #94A3B8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.legal-meta {
-    color: var(--primary);
-    font-weight: 600;
-    margin-bottom: 4rem;
-    font-size: 1.1rem;
-}
-
-.legal-section {
-    background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-radius: 24px;
-    border: 1px solid var(--glass-border);
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    transition: border-color 0.3s;
-}
-
-.legal-section:hover {
-    border-color: rgba(99, 102, 241, 0.3);
-}
-
-.legal-section h2 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 1.2rem;
+    margin-bottom: 8px;
     color: var(--text-main);
 }
 
-.legal-section p, .legal-section ul {
+.legal-meta {
     color: var(--text-muted);
-    margin-bottom: 1rem;
-    line-height: 1.8;
+    font-size: 12px;
+    margin-bottom: 24px;
+}
+
+.legal-section {
+    margin-bottom: 24px;
+}
+
+.legal-section h2 {
+    font-size: 16px;
+    font-weight: 900;
+    margin-bottom: 8px;
+    color: #818CF8; /* Dark mode primary color from app */
+}
+
+.legal-section p, .legal-section ul {
+    color: rgba(255, 255, 255, 0.7); /* white70 from app */
+    font-size: 14px;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.legal-section ul {
+    list-style-type: none;
+}
+
+.legal-section li {
+    margin-bottom: 4px;
+}
+
+.legal-section li::before {
+    content: "- ";
 }
 
 .legal-section a {
