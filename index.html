@@ -1,305 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neuro Trivia | AI-Powered Trivia Experience</title>
-    <meta name="description"
-        content="Discover Neuro Trivia, the ultimate AI-powered trivia game. Challenge your mind with endless personalized questions.">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700&display=swap');
-
-        :root {
-            --bg-color: #0f172a;
-            --text-color: #f8fafc;
-            --accent-primary: #8b5cf6;
-            --accent-secondary: #3b82f6;
-            --card-bg: rgba(30, 41, 59, 0.7);
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Animated Background */
-        .bg-glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
-            top: -200px;
-            left: -200px;
-            border-radius: 50%;
-            z-index: -1;
-            animation: pulse 8s infinite alternate;
-        }
-
-        .bg-glow-2 {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
-            bottom: -100px;
-            right: -100px;
-            border-radius: 50%;
-            z-index: -1;
-            animation: pulse 10s infinite alternate-reverse;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-
-            100% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            padding: 40px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Outfit', sans-serif;
-            font-size: 28px;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin-left: 30px;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent-primary);
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 80px 0 120px;
-            min-height: 60vh;
-            justify-content: center;
-        }
-
-        h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 56px;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        h1 span {
-            background: linear-gradient(135deg, #a78bfa, #60a5fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            font-size: 20px;
-            color: #94a3b8;
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 16px 32px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: white;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 40px 0 80px;
-        }
-
-        .feature-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(139, 92, 246, 0.3);
-        }
-
-        .feature-icon {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        .feature-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .feature-desc {
-            color: #94a3b8;
-            font-size: 15px;
-        }
-
-        footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px 0;
-            text-align: center;
-            color: #64748b;
-        }
-
-        footer a {
-            color: #94a3b8;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 40px;
-            }
-
-            .hero {
-                padding: 40px 0 80px;
-            }
-
-            nav {
-                display: none;
-            }
-        }
-    </style>
+    <title>Kanji Boss | Master Kanji with Nepali Translations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="bg-glow"></div>
-    <div class="bg-glow-2"></div>
-
     <div class="container">
         <header>
-            <div class="logo">Neuro Trivia</div>
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Kanji Boss Logo">
+                <span>NEPALI KANJI</span>
+            </div>
             <nav>
                 <a href="#features">Features</a>
-                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
             </nav>
         </header>
 
-        <main class="hero">
-            <h1>Test your knowledge with <span>AI-Powered</span> Trivia</h1>
-            <p class="subtitle">Experience an infinite world of dynamic trivia, customized to your interests and
-                generated in real-time by advanced AI.</p>
+        <section class="hero">
+            <h1>Learn Kanji. <br>In your language.</h1>
+            <p>The first professional Kanji learning app with accurate Nepali translations, stroke order animations, and JLPT-focused training.</p>
+            <a href="#" class="btn">Download App</a>
+            <div class="hero-image">
+                <img src="assets/images/feature_image.png" alt="Kanji Boss App Preview">
+            </div>
+        </section>
 
-<div class="cta-buttons">
-    <a href="https://apps.apple.com/us/app/neuro-trivia/id6763897311" 
-       class="btn btn-primary" 
-       target="_blank" 
-       rel="noopener noreferrer">
-       Download for iOS
-    </a>
-
-    <a href="#" class="btn btn-secondary">
-        Get it on Google Play
-    </a>
-</div>
-        </main>
-
-        <section id="features" class="features">
+        <section class="features" id="features">
             <div class="feature-card">
-                <div class="feature-icon">🧠</div>
-                <div class="feature-title">Endless Questions</div>
-                <div class="feature-desc">Never run out of content. Our AI generates fresh, challenging questions on any
-                    topic imaginable.</div>
+                <h3>Native Nepali</h3>
+                <p>Don't get lost in English-to-Japanese translations. Learn Kanji meanings in clear, native Nepali.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <div class="feature-title">Real-time Adaptation</div>
-                <div class="feature-desc">The difficulty adjusts dynamically based on your performance to keep you
-                    engaged and challenged.</div>
+                <h3>Stroke Animations</h3>
+                <p>Visualize the correct stroke order for over 2,000 Kanji using our fluid, real-time drawing animations.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🏆</div>
-                <div class="feature-title">Track Progress</div>
-                <div class="feature-desc">Monitor your scores, build your persona, and see how you improve over time
-                    across different categories.</div>
+                <h3>JLPT Ready</h3>
+                <p>Full support for N5 through N1 levels with localized quizzes and progress tracking.</p>
             </div>
         </section>
 
         <footer>
-            <p>&copy; 2026 Soranix. All rights reserved.</p>
-            <p style="margin-top: 10px; font-size: 14px;">
-                <a href="privacy-policy.html">Privacy Policy</a>
-            </p>
+            <div class="footer-content">
+                <div class="copyright">© <span id="year"></span> Kanji Boss Team. All rights reserved.</div>
+                <div class="footer-links">
+                    <a href="#features">Features</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Use</a>
+                    <a href="#">Support</a>
+                </div>
+            </div>
         </footer>
     </div>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
-
 </html>
