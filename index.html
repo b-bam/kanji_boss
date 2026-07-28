@@ -8,6 +8,45 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Custom styling to match the image buttons -->
+    <style>
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 28px 0;
+        }
+
+        .btn-store {
+            background-color: #4f3ce3;
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.05rem;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 24px rgba(79, 60, 227, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .btn-store:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 30px rgba(79, 60, 227, 0.45);
+            background-color: #4331d4;
+        }
+
+        .btn-store:active {
+            transform: translateY(0);
+            box-shadow: 0 8px 18px rgba(79, 60, 227, 0.3);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -27,7 +66,13 @@
         <section class="hero">
             <h1>Master Kanji. <br>Like a Boss.</h1>
             <p>The ultimate Kanji learning app with accurate English translations, stroke order animations, and JLPT-focused training. Over 2,000 Kanji in your pocket.</p>
-           <a href="https://apps.apple.com/jp/app/kanji-boss-japanese-kanji/id6786220674?l=en-US" class="btn">Download Kanji Boss on the App Store</a>
+            
+            <!-- Store Buttons -->
+            <div class="cta-buttons">
+                <a href="https://play.google.com/store/apps/details?id=kanjiboss.app" class="btn-store">Get it on Google Play</a>
+                <a href="https://apps.apple.com/jp/app/kanji-boss-japanese-kanji/id6786220674?l=en-US" class="btn-store">Download on the App Store</a>
+            </div>
+
             <div class="hero-image">
                 <img src="assets/images/feature_image.png" alt="Kanji Boss App Preview">
             </div>
@@ -55,7 +100,7 @@
                     <a href="#features">Features</a>
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Use</a>
-                    <a href="mailto:soranexcorp@gmail.com">Support</a>
+                    <a href="mailto:kanjibossapp@gmail.com">Support</a>
                 </div>
             </div>
         </footer>
